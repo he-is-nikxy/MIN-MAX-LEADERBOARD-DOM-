@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIN & MAX LEADERBOARD (DOM)</title>
+    <style>
+        #minmax {
+            height: 150px;
+            width: 380px;
+            /* border: 2px solid red; */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: auto;
+        }
+        #min > input{
+            background-color: rgb(255, 82, 82);
+        }
+        #max > input{
+            background-color: rgba(0, 128, 0, 0.806);
+        }
+        #minmax > div > input {
+            height: 70px;
+            width: 100px;
+            text-align: center;
+        }
+        #min > p {
+            text-align: center;
+            font-size: x-large;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            padding-bottom: 0%;
+        }
+        #max > p {
+            text-align: center;
+            font-size: x-large;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        #score {
+            height: 100px;
+            width: 250px;
+            /* border: 2px solid red; */
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+        }
+        #score > p {
+            text-align: center;
+            font-size: x-large;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            font-weight: bold;
+        }
+        #score > input {
+            height: 70px;
+            width: 250px;
+            background-color: rgb(165, 165, 165);
+            text-align: center;
+            border: 1px solid;
+        }
+        #numbers {
+            /* height: 200px; */
+            width: 220px;
+            /* border: 2px solid blue; */
+            display: grid;
+            grid-template-columns: auto auto auto;
+            grid-template-rows: auto auto auto;
+            justify-content: center;
+            gap: 30px;
+            align-items: center;
+            margin: auto;
+            margin-top: 80px;
+        }
+        #numbers > div > button{
+            height: 60px;
+            width: 60px;
+            font-size: large;
+            cursor: pointer;
+        }
+        #zero {
+            display: flex;
+            justify-content: center;
+            margin: auto;
+            margin-top: 30px;
+            margin-bottom: 30px;
+        }
+        #zero > button {
+            height: 60px;
+            width: 60px;
+            font-size: large;
+            cursor: pointer;
+        }
+        #enter {
+            /* border: 2px solid red; */
+            display: grid;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+        }
+        #enter > button {
+            height: 60px;
+            width: 200px;
+            color: white;
+            background-color: rgb(27, 26, 26);
+            text-align: center;
+            font-size: x-large;
+            /* font-weight: bold; */
+            border: 1px solid;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        .orange {
+            background-color: orange;
+        }
+        .green {
+            background-color: rgb(23, 191, 23);
+        }
+        .purple {
+            background-color: rgb(174, 9, 174);
+        }
+        #maximum {
+            font-size: large;
+            font-weight: 500;
+        }
+        #minimum {
+            font-size: large;
+            font-weight: 500;
+        }
+        #display {
+            font-size: large;
+            font-weight: 500;
+        }
+        #enterr {
+            cursor: pointer;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="minmax">
+        <div id="min">
+            <input type="text" id="minimum">
+            <p>Min</p>
+        </div>
+        <div id="max">
+            <input type="text" id="maximum">
+            <p>Max</p>
+            <p></p>
+        </div>
+    </div>
+    <div id="score">
+        <p>Score</p>
+        <input type="text" name="" id="display">
+    </div>
+    <div id="numbers">
+        <div>
+            <button onclick="display.value += '1' " class="green">1</button>
+        </div>
+        <div>
+            <button onclick="display.value += '2' " class="orange">2</button>
+        </div>
+        <div>
+            <button onclick="display.value += '3' " class="green">3</button>
+        </div>
+        <div>
+            <button onclick="display.value += '4' " class="orange">4</button>
+        </div>
+        <div>
+            <button onclick="display.value += '5' " class="orange">5</button>
+        </div>
+        <div>
+            <button onclick="display.value += '6' " class="orange">6</button>
+        </div>
+        <div>
+            <button onclick="display.value += '7' " class="green">7</button>
+        </div>
+        <div>
+            <button onclick="display.value += '8' " class="orange">8</button>
+        </div>
+        <div>
+            <button onclick="display.value += '9' " class="green">9</button>
+        </div>
+    </div>
+    <div id="zero">
+        <button onclick="display.value += '0' " class="purple">0</button>
+    </div>
+    <div id="enter">
+        <button id="enterr">
+            Enter
+        </button>
+    </div>
+</body>
+<script>
+    let minimum = document.querySelector("#minimum");
+    let maximum = document.querySelector("#maximum");
+    let score = document.querySelector("#display");
+    let enter = document.querySelector("#enterr");
+    
+    minimum.value = Infinity;
+    maximum.value = -Infinity;
+
+    enter.addEventListener("click", function() {
+        if (+score.value < +minimum.value) {
+            minimum.value = score.value;
+        }
+        if (+score.value > +maximum.value) {
+            maximum.value = score.value;
+        }
+        // onclick="display.value = '' "
+        score.value = "";
+    })
+
+    
+
+
+</script>
+</html>
